@@ -1,0 +1,8 @@
+#ifndef MATH_BUILDER_MAIN_H
+#define MATH_BUILDER_MAIN_H
+#include <iostream>
+#include <SFML/Graphics.hpp>
+#include "headers/FunctionInputField.h"
+#include "headers/Screen.h"
+//#include "headers/Counter.h"
+#endif //MATH_BUILDER_MAIN_H
