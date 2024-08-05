@@ -11,7 +11,7 @@ add_executable(math_builder main.cpp
         headers/Screen.h
         main.h
         headers/Counter.h
-        src/Counter.cpp
-        src/Counter.h)
+        headers/Counter.h
+        headers/CursorCoordinates.h)
 
 target_link_libraries(math_builder sfml-graphics sfml-audio)

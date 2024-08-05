@@ -4,5 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include "headers/FunctionInputField.h"
 #include "headers/Screen.h"
+#include <sstream>
+#include "headers/CursorCoordinates.h"
 //#include "headers/Counter.h"
 #endif //MATH_BUILDER_MAIN_H

@@ -13,6 +13,8 @@ public:
   float pos_x_;
   float pos_y_;
   bool is_active_ = false;
+  double scale_ = 1;
+  double delta_ = 0.5;
 
   const float kBoardShift = 10;
   const sf::Color kTextColor = sf::Color::White;

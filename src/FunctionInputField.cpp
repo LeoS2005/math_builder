@@ -70,10 +70,10 @@ void FunctionInputField::HandleInput(sf::Event& event) {
 
 void FunctionInputField::CountPoints() { // функция расчитывает точки графика по строковому выражению из поля ввода
   points_.clear();
-  for (double x = -400.0; x != 400.0; x += Screen::delta) {
+  for (double x = -400.0; x != 400.0; x += delta_) {
     double y = Computing(textField.getString(), x);
-    double pos_x = Screen::lenght / 2 + x;
-    double pos_y = Screen::width / 2 - y;
+    double pos_x = (Screen::lenght / 2) + x * scale_;
+    double pos_y = (Screen::width / 2) - y * scale_;
     /*if ((pos_x < Screen::lenght) && (pos_y < Screen::width)) {
       points_.emplace_back(pos_x, pos_y);
     }*/

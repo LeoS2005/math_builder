@@ -1,8 +1,7 @@
 #include "main.h"
 
 int main() {
-  //std::cout << Computing("y = x ^ 2 + 5 * x + 2", 2);
-  sf::RenderWindow window(sf::VideoMode(Screen::lenght, Screen::width), "Text Input Field");
+  sf::RenderWindow window(sf::VideoMode(Screen::lenght, Screen::width), "Text Input Field", /*sf::Style::Titlebar |*/ sf::Style::Close);
 
   // ось х
   sf::RectangleShape line_x(sf::Vector2f(window.getSize().x, 1));
@@ -41,7 +40,28 @@ int main() {
           text_field_1.CountPoints();
         }
       }
+
+      if (event.type == sf::Event::MouseWheelScrolled) {
+        if (event.mouseWheelScroll.wheel == sf::Mouse::VerticalWheel) {
+          if (event.mouseWheelScroll.delta == 1) {
+            text_field_1.scale_ *= 2;
+            if (text_field_1.delta_ > 0.125) {
+              text_field_1.delta_ /= 2;
+            }
+            text_field_1.CountPoints();
+          }
+          if (event.mouseWheelScroll.delta == -1) {
+            text_field_1.scale_ /= 2;
+            text_field_1.delta_ = std::max(0.125, 1 / text_field_1.scale_);
+            text_field_1.delta_ *= 2;
+            text_field_1.CountPoints();
+          }
+        }
+      }
+
       window.clear();
+
+      WriteCursorCoordinates(window, text_field_1.scale_);
 
       text_field_1.HandleInput(event);
       window.draw(line_x);
