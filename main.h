@@ -6,5 +6,5 @@
 #include "headers/Screen.h"
 #include <sstream>
 #include "headers/CursorCoordinates.h"
-//#include "headers/Counter.h"
+#include "headers/CoordinatesNetwork.h"
 #endif //MATH_BUILDER_MAIN_H

@@ -12,6 +12,7 @@ add_executable(math_builder main.cpp
         main.h
         headers/Counter.h
         headers/Counter.h
-        headers/CursorCoordinates.h)
+        headers/CursorCoordinates.h
+        headers/CoordinatesNetwork.h)
 
 target_link_libraries(math_builder sfml-graphics sfml-audio)
