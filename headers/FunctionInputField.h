@@ -14,7 +14,8 @@ public:
   float pos_y_;
   bool is_active_ = false;
   double scale_ = 32;
-  double delta_ = 0.5;
+  //double delta_ = 0.5;
+  double delta_ = 0.25;
 
   const float kBoardShift = 10;
   const sf::Color kTextColor = sf::Color::White;

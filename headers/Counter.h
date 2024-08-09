@@ -58,9 +58,9 @@ double Computing(std::string&& function, double x) {
   std::vector<char> operators_set{'+', '-', '*', '/', '^'};
   for (auto& i : query) {
     //std::find(operators_set.begin(), operators_set.end(), i[0]);
-    if (std::find(operators_set.begin(), operators_set.end(), i[0]) != operators_set.end()) {
+    if ((std::find(operators_set.begin(), operators_set.end(), i[0]) != operators_set.end())) {
 
-      if ((operators_stack.size() == 0) || (Priority(operators_stack.top()) < Priority(i[0]))) {
+      if ((operators_stack.size() == 0) || (operators_stack.top() == '(') || (Priority(operators_stack.top()) < Priority(i[0]))) {
           operators_stack.push(i[0]);
       } else {
 
@@ -86,14 +86,19 @@ double Computing(std::string&& function, double x) {
             operands_stack.push(std::pow(operand_1, operand_2));
           } else if (operators_stack.top() == '(') {
             // ????
+            operators_stack.push('(');
           }
         }
         operators_stack.push(i[0]);
       }
     }
 
+    else if (i == "(") {
+      operators_stack.push('(');
+    }
+
     else if ((i == ")")) {
-      while (operands_stack.top() != '(') {
+      while (operators_stack.top() != '(') {
         double operand_2 = operands_stack.top();
         operands_stack.pop();
         double operand_1 = operands_stack.top();
@@ -121,7 +126,7 @@ double Computing(std::string&& function, double x) {
     else if (i == "x") {
       operands_stack.push(x);
     } else {
-      operands_stack.push(std::stoi(i));
+      operands_stack.push(std::stod(i));
     }
   }
   while (operators_stack.size() != 0) {

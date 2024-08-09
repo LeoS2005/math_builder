@@ -2,7 +2,7 @@
 
 int main() {
   bool network_flag = false;
-  sf::RenderWindow window(sf::VideoMode(Screen::lenght, Screen::width), "Text Input Field", /*sf::Style::Titlebar |*/ sf::Style::Close);
+  sf::RenderWindow window(sf::VideoMode(Screen::lenght, Screen::width), "Text Input Field", sf::Style::Titlebar | sf::Style::Close);
 
   // ось х
   sf::RectangleShape line_x(sf::Vector2f(window.getSize().x - 1, 3));
