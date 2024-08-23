@@ -34,11 +34,10 @@ int main() {
 
       if (event.type == sf::Event::KeyPressed) {
         if (event.key.code == sf::Keyboard::Escape) {
-          window.close();
+          //window.close();
+          text_field_1.ReturnDefaultState(); // default state
         } else if (event.key.code == sf::Keyboard::Enter) {
-          text_field_1.is_active_ = false;
-          text_field_1.is_graph_ = true;
-          text_field_1.CountPoints();
+          text_field_1.Calculating();
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::LControl) || sf::Keyboard::isKeyPressed(sf::Keyboard::RControl))
         {
@@ -50,17 +49,21 @@ int main() {
       if ((event.type == sf::Event::MouseWheelScrolled) && text_field_1.is_graph_) {
         if (event.mouseWheelScroll.wheel == sf::Mouse::VerticalWheel) {
           if (event.mouseWheelScroll.delta == 1) {
-            text_field_1.scale_ *= 2;
-            if (text_field_1.delta_ > 0.125) {
-              text_field_1.delta_ /= 2;
+            if (text_field_1.scale_ <= 256) {
+              text_field_1.scale_ *= 2;
+              if (text_field_1.delta_ > 0.125) {
+                text_field_1.delta_ /= 2;
+              }
+              text_field_1.CountPoints();
             }
-            text_field_1.CountPoints();
           }
           if (event.mouseWheelScroll.delta == -1) {
-            text_field_1.scale_ /= 2;
-            text_field_1.delta_ = std::max(0.125, 1 / text_field_1.scale_);
-            text_field_1.delta_ *= 2;
-            text_field_1.CountPoints();
+            if (text_field_1.scale_ > 0.0625) {
+              text_field_1.scale_ /= 2;
+              text_field_1.delta_ = std::max(0.125, 1 / text_field_1.scale_);
+              text_field_1.delta_ *= 2;
+              text_field_1.CountPoints();
+            }
           }
         }
         std::cout << text_field_1.scale_ << '\n';

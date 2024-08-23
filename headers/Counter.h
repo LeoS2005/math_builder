@@ -13,10 +13,14 @@
 #include <algorithm>
 #include <cmath>
 
+namespace exeption {
 // исплючение, при попытке установить приоритет некорректного опратора
-struct IncorrectOperator : std::exception {};
+  struct IncorrectOperator : std::exception {
+  };
 
-
+  struct IncorrectExpression : std::exception {
+  };
+}
 /*
 приоритет:
 1: +,-
@@ -38,7 +42,7 @@ int Priority(std::string& operation) {
   if ((operation == "-") || (operation == "+")) {
     return 1;
   }
-  throw IncorrectOperator{};
+  throw exeption::IncorrectOperator{};
 }
 
 // разбивает строку на подстроки по пробелам
@@ -229,6 +233,10 @@ double Computing(std::string&& function, double x) {
       operands_stack.push(std::log(operand_2));
     }
   }
-  return operands_stack.top();
+  if (operands_stack.size() == 1) {
+    return operands_stack.top();
+  } else {
+    throw exeption::IncorrectExpression{};
+  }
 }
 #endif //MATH_BUILDER_COUNTER_H

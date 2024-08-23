@@ -10,7 +10,7 @@ FunctionInputField::FunctionInputField(sf::RenderWindow& window, float pos_x, fl
   }
   textField.setFont(font);
   textField.setCharacterSize(kCharacterSize);
-  textField.setString("|Enter");
+  textField.setString(kDefaultTitle);
   textField.setColor(kTextColor);
   border.setFillColor(sf::Color::Transparent);
   border.setOutlineColor(kOutLineColor);
@@ -79,4 +79,22 @@ void FunctionInputField::CountPoints() { // функция расчитывае�
     }*/
     points_.emplace_back(pos_x, pos_y);
   }
+}
+
+void FunctionInputField::Calculating() {
+  is_active_ = false;
+  is_graph_ = true;
+  try {
+    CountPoints();
+  } catch (...) {
+    std::cout << "IncorrectExpression\n";
+    is_graph_ = false;
+  }
+}
+
+void FunctionInputField::ReturnDefaultState() {
+  is_active_ = false;
+  is_graph_ = false;
+  textField.setString(kDefaultTitle);
+  border.setSize(sf::Vector2f(textField.getGlobalBounds().width + kCorrection, textField.getGlobalBounds().height + kCorrection));
 }

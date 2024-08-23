@@ -34,6 +34,8 @@ public:
   void UpdateBorder();
   void HandleInput(sf::Event& event);
   void CountPoints();
+  void Calculating(); // launch calculating
+  void ReturnDefaultState(); // return default state, for enter
 };
 
 
