@@ -32,12 +32,6 @@ void FunctionInputField::Draw() {
       sf::Vertex line[] = {sf::Vertex(point_1),sf::Vertex(point_2)};
       window_->draw(line, 2, sf::Lines);
     }
-   /* for (auto pair : points_) {
-      sf::CircleShape point(Screen::rad);
-      point.setFillColor(sf::Color::White);
-      point.setPosition(pair.first, pair.second);
-      window_->draw(point);
-    }*/
   }
 }
 
@@ -70,10 +64,10 @@ void FunctionInputField::HandleInput(sf::Event& event) {
 
 void FunctionInputField::CountPoints() { // функция расчитывает точки графика по строковому выражению из поля ввода
   points_.clear();
-  for (double x = -400.0; x != 400.0; x += delta_) {
+  for (double x = -400.0; x != 400.0; x += Screen::delta) {
     double y = Computing(textField.getString(), x);
-    double pos_x = (Screen::lenght / 2) + x * scale_;
-    double pos_y = (Screen::width / 2) - y * scale_;
+    double pos_x = (Screen::lenght / 2) + x * Screen::scale + Screen::scale * VectorShift::x;
+    double pos_y = (Screen::width / 2) - y * Screen::scale + Screen::scale * VectorShift::y;
     /*if ((pos_x < Screen::lenght) && (pos_y < Screen::width)) {
       points_.emplace_back(pos_x, pos_y);
     }*/

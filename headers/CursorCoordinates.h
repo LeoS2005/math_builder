@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include <sstream>
 #include "Screen.h"
+#include "VectorShift.h"
 // функция отрисовывающая координаты рядом с графиком
 void WriteCursorCoordinates(sf::RenderWindow& window, double delta) {
   sf::Font font;
@@ -20,7 +21,7 @@ void WriteCursorCoordinates(sf::RenderWindow& window, double delta) {
 
   // Преобразуем координаты в строку
   std::ostringstream oss;
-  oss << "(" << (- Screen::lenght / 2 + mousePosition.x) / delta << ", " << (Screen::width / 2 - mousePosition.y) / delta << ")";
+  oss << "(" << (- Screen::lenght / 2 + mousePosition.x) / delta - VectorShift::x << ", " << (Screen::width / 2 - mousePosition.y) / delta - VectorShift::y << ")";
   text.setString(oss.str());
 
   // Устанавливаем позицию текста около курсора

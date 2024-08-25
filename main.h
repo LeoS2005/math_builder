@@ -7,5 +7,5 @@
 #include <sstream>
 #include "headers/CursorCoordinates.h"
 #include "headers/CoordinatesNetwork.h"
-//#include "headers/Counter.h"
+#include "headers/VectorShift.h"
 #endif //MATH_BUILDER_MAIN_H

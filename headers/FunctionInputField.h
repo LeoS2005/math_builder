@@ -3,7 +3,7 @@
 #include <SFML/Window/Keyboard.hpp>
 #include "Screen.h"
 #include <SFML/Graphics.hpp>
-
+#include "VectorShift.h"
 class FunctionInputField {
 public:
   sf::RenderWindow *  window_;
@@ -13,9 +13,8 @@ public:
   float pos_x_;
   float pos_y_;
   bool is_active_ = false;
-  double scale_ = 32;
-  //double delta_ = 0.5;
-  double delta_ = 0.25;
+  //double scale_ = 32;
+  //double delta_ = 0.25;
 
   const float kBoardShift = 10;
   const sf::Color kTextColor = sf::Color::White;
